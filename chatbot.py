@@ -9,16 +9,11 @@ client = OpenAI(
     base_url="https://api.groq.com/openai/v1"
 )
 
-def get_response(user_input):
-
+def get_response(messages):
     response = client.chat.completions.create(
-        model="llama-3.1-8b-instant",        
-        messages=[
-            {
-                "role": "user",
-                "content": user_input
-            }
-        ]
+        model="llama-3.1-8b-instant",
+        messages=messages
     )
+    
 
     return response.choices[0].message.content
